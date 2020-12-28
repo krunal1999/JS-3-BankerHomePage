@@ -27,7 +27,18 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
-//button scrolling
+//button scrolling learn more--------------
 btnScrollTo.addEventListener('click', function () {
   section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+//navbar links scrolling effect
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+  console.log('clicked');
+  //matching stratergy
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
 });
