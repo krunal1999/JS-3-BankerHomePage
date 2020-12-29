@@ -56,5 +56,27 @@ const handleHover = function (e) {
   }
 };
 nav.addEventListener('mouseover', handleHover.bind(0.5));
-
 nav.addEventListener('mouseout', handleHover.bind(1));
+
+//stickyy navigation--------------------
+const header = document.querySelector('.header');
+const navheight = nav.getBoundingClientRect().height;
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+  if (!entry.isIntersecting) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+};
+
+const headerObersver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navheight}px`,
+});
+headerObersver.observe(header);
+
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault();
+//   console.log(e);
+//   e.returnValue = 'message';
+// });
